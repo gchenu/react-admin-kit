@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Layout from "@/layouts/DashboardLayout";
+import Layout from "@/layouts/app-layout";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
