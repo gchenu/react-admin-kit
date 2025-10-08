@@ -1,17 +1,16 @@
 import { type ReactNode } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import { AppContent } from "@/components/app-content";
-import { AppSidebarHeader } from "@/components/app-sidebar-header";
+import { BreadcrumbItem } from "@/types";
+import AppLayoutTemplate from "@/layouts/app/app-sidebar-layout";
 
-export default function Layout({ children }: { children: ReactNode }) {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      <AppContent>
-        <AppSidebarHeader />
-        {children}
-      </AppContent>
-    </SidebarProvider>
-  );
+interface AppLayoutProps {
+  children: ReactNode;
+  breadcrumbs?: BreadcrumbItem[];
 }
+
+export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => {
+  return (
+    <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
+      {children}
+    </AppLayoutTemplate>
+  );
+};
