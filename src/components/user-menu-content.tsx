@@ -7,12 +7,15 @@ import {
 import { UserInfo } from "@/components/user-info";
 import { type User } from "@/types";
 import { LogOut, Settings } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 interface UserMenuContentProps {
   user: User;
 }
 
 export function UserMenuContent({ user }: UserMenuContentProps) {
+  const { logout } = useAuth();
+
   return (
     <>
       <DropdownMenuLabel className="p-0 font-normal">
@@ -31,7 +34,12 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuItem asChild>
-        <a className="block w-full" href="#" data-test="logout-button">
+        <a
+          className="block w-full"
+          href="#"
+          data-test="logout-button"
+          onClick={logout}
+        >
           <LogOut className="mr-2" />
           Log out
         </a>
